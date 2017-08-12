@@ -13,20 +13,18 @@ sendemail = function(request, response, next){
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
 		  auth: {
-		    user: 'naveen.bizviz@gmail.com',
-		    pass: 'naveen$@!n93',
+		    user: 'sender@gmail.com',
+		    pass: 'password',
 		    host: 'smtp.gmail.com', 
 		    ssl: true
 		  }
 	});
 	console.log(request.body);
 	var mailOptions = {
-			to: 'naveen.sain@bdbizviz.com',
-			subject: 'Verify Your Account',
-			html: `<h2>Dear Naveen Sain</h2>
-					<h3>Welcome to Yujaa Free Trail Account</h3>
-					<p>Please active your account using below button</p><br>
-					<a  href="http://localhost:4800/createpassword"><button>Verify Account</button></a>`
+			to: 'receiver@gmail.com',
+			subject: 'Email Sending',
+			html: `<h2>Dear User</h2>
+					<h3>Welcome to Email Sending</h3>`
 	};	
 		transporter.sendMail(mailOptions, function(error, info){
 		  if (error) {
@@ -37,38 +35,9 @@ sendemail = function(request, response, next){
 		});
 		next();
 };
-/*
-forgotPassword = function(request,response,next){
-	var transporter = nodemailer.createTransport({
-		service: 'gmail',
-		  auth: {
-		    user: 'naveen.bizviz@gmail.com',
-		    pass: 'naveen$@!n93',
-		    host: 'smtp.gmail.com', 
-		    ssl: true
-		  }
-	});
-	console.log(request.body.emailid);
-	var mailOptions = {
-			to: 'naveen.sain@bdbizviz.com',
-			subject: 'Forgot Password',
-			html: `<h2>Dear Naveen Sain</h2>
-					<h3>Welcome to Yujaa Free Trail Account</h3>
-					<p>Please active your account using below button</p><br>
-					<a  href="http://localhost:4800/createpassword"><button>Verify Account</button></a>`
-	};	
-		transporter.sendMail(mailOptions, function(error, info){
-		  if (error) {
-		    console.log(error);
-		  } else {
-		    console.log('Email sent: ' + info.response);
-		  }
-		});
-		next();
-};*/
+		
 
 app.use("/sendemail", sendemail);
-/*app.use("/forgotpassword", forgotPassword);*/
 http.createServer(app).listen(8888);
 console.log("Server is listening......at 8888!!");
 

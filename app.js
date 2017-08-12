@@ -4,16 +4,16 @@
 var transporter = nodemailer.createTransport({
 	service: 'gmail',
 	  auth: {
-	    user: 'naveen.bizviz@gmail.com',
-	    pass: 'naveen$@!n93',
+	    user: 'sender@gmail.com',
+	    pass: 'senderpassword',
 	    host: 'smtp.gmail.com', 
 	    ssl: true
 	  }
 });
 
 var mailOptions = {
-		from: 'naveen.bizviz@gmail.com',
-		to: 'naveensain93@gmail.com',
+		from: 'sender@gmail.com',
+		to: 'receiver@gmail.com',
 		subject: 'Sending Email using Node.js',
 		text: 'That was easy!'
 };
@@ -57,8 +57,8 @@ placeHolder(6);*/
 /*sendmail: function(req, res) {
         
 var server  = email.server.connect({
-   user:    "puran.jmp@gmail.com", 
-   password:"9314549172", 
+   user:    "sender@gmail.com", 
+   password:"password", 
    host:    "smtp.gmail.com", 
    ssl:     true
 });
@@ -66,7 +66,7 @@ var server  = email.server.connect({
 // send the message and get a callback with an error or details of the message that was sent
 server.send({
    text:    "You have signed up", 
-   from:    "puran.jmp@gmail.com", 
+   from:    "sender@gmail.com", 
    to:      req.body.name,
    subject: "Welcome to my app",
    attachment: 
